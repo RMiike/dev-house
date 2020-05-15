@@ -1,6 +1,6 @@
-const Reserv = require('../models/Reserv')
-const User = require('../models/User')
-const House = require('../models/House')
+const Reserv = require("../models/Reserv")
+const User = require("../models/User")
+const House = require("../models/House")
 
 class ReservController {
 
@@ -8,7 +8,7 @@ class ReservController {
 
     const { user_id } = req.headers
 
-    const reserves = await Reserv.find({ user: user_id }).populate('house')
+    const reserves = await Reserv.find({ user: user_id }).populate("house")
 
     return res.json(reserves)
   }
@@ -26,7 +26,7 @@ class ReservController {
     }
 
     if (house.status !== true) {
-      return res.status(400).json({ error: 'Solicitação indisponível' })
+      return res.status(400).json({ error: "Solicitação indisponível" })
     }
 
     const user = await User.findById(user_id)
@@ -39,7 +39,7 @@ class ReservController {
       date
     })
 
-    await reserve.populate('house').populate('user').execPopulate()
+    await reserve.populate("house").populate("user").execPopulate()
 
     return res.json(reserve)
   }
