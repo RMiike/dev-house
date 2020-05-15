@@ -61,7 +61,7 @@ This project is under the MIT license. See the [LICENSE](https://github.com/RMii
 
 ---
 
-Made with ♥ by Renato Miike :wave: [Get in touch!](https://www.linkedin.com/in/renato-alves-583804176/)
+[Get in touch!](https://www.linkedin.com/in/renato-alves-583804176/)
 
 [nodejs]: https://nodejs.org/
 [yarn]: https://yarnpkg.com/
