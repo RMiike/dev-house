@@ -1,5 +1,4 @@
 const User = require('../models/User')
-const yup = require('yup')
 
 class SessionController {
 
@@ -8,9 +7,8 @@ class SessionController {
     let user = await User.findOne({ email })
     if (user) {
       return res.status(400).send('User already existis!')
-    } else {
-      user = await User.create({ email })
     }
+    user = await User.create({ email })
 
     return res.json(user)
   }
