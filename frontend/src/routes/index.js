@@ -5,7 +5,6 @@ import PrivateRoute from './privateroute'
 
 const Route = () => {
   const {signed} = useAuth()
-  console.log(signed)
   return ( signed ?  <AuthRoute/> : <PrivateRoute/>
   );
 };

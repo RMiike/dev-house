@@ -40,7 +40,6 @@ class HouseController {
       })
       return res.send()
     } catch (err) {
-     console.log(err)
      return res.sendStatus(500)
 
     }
@@ -55,7 +54,6 @@ class HouseController {
       const houses = await House.find({ status }).catch((e) => { if (e) throw e })
       return res.json(houses)
     } catch (err) {
-      console.log(err)
       return res.sendStatus(500)
 
     }

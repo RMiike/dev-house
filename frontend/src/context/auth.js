@@ -6,7 +6,7 @@ const AuthContext = createContext({
 })
 export const AuthProvider = ({children}) => {
   return (
-    <AuthContext.Provider value={{signed: false, email: 'teste@teste.com'}}>
+    <AuthContext.Provider value={{signed: true, email: 'teste@teste.com'}}>
       {children}
     </AuthContext.Provider>
   )

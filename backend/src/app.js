@@ -19,8 +19,8 @@ class App {
         }
       })
     }
-    mongoose.connection.once('open', () => console.log('Successfully connected to MongoDB'));
-    mongoose.connection.on('error', (e) => console.log(e));
+    mongoose.connection.once('open');
+    mongoose.connection.on('error', (e) => {if(e) handleConnect()});
     handleConnect()
    
 
