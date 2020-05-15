@@ -9,20 +9,20 @@ class App {
   constructor() {
     this.server = express()
 
-    async function handleConnect(){
-      await  mongoose.connect(process.env.DB_STRING, {
+    async function handleConnect() {
+      await mongoose.connect(process.env.DB_STRING, {
         useUnifiedTopology: true,
         useNewUrlParser: true
       }).catch(e => {
-        if(e){
+        if (e) {
           handleConnect()
         }
       })
     }
     mongoose.connection.once('open');
-    mongoose.connection.on('error', (e) => {if(e) handleConnect()});
+    mongoose.connection.on('error', (e) => { if (e) handleConnect() });
     handleConnect()
-   
+
 
 
 

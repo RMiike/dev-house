@@ -2,19 +2,19 @@ const House = require('../models/House')
 const User = require('../models/User')
 
 class HouseController {
-  
-  async store(req, res) {
-  
-      const { filename } = req.file
-      const { description, location, price, status } = req.body
-      const { user_id } = req.headers
 
-      const house = await House.create({
-        user: user_id,
-        thumbnail: filename,
-        description, location, price, status
-      })
-      return res.json(house)
+  async store(req, res) {
+
+    const { filename } = req.file
+    const { description, location, price, status } = req.body
+    const { user_id } = req.headers
+
+    const house = await House.create({
+      user: user_id,
+      thumbnail: filename,
+      description, location, price, status
+    })
+    return res.json(house)
 
   }
 
@@ -40,7 +40,7 @@ class HouseController {
       })
       return res.send()
     } catch (err) {
-     return res.sendStatus(500)
+      return res.sendStatus(500)
 
     }
 
@@ -59,22 +59,22 @@ class HouseController {
     }
   }
 
-  async destroy(req,res){
+  async destroy(req, res) {
 
-    const {house_id} = req.body
-    const { user_id} = req.headers
+    const { house_id } = req.body
+    const { user_id } = req.headers
 
     const user = await User.findById(user_id)
     const houses = await House.findById(house_id)
 
-   
-    
+
+
     if (String(user._id) !== String(houses.user)) {
-        return res.status(401).json({ error: ' não autorizado' })
-      
+      return res.status(401).json({ error: ' não autorizado' })
+
     }
-    await House.findByIdAndDelete({_id: house_id})
-    return res.json({excluido: true})
+    await House.findByIdAndDelete({ _id: house_id })
+    return res.json({ excluido: true })
   }
 }
 

@@ -47,8 +47,8 @@ class ReservController {
   async destroy(req, res) {
 
     const { reserve_id } = req.body
-    
-    await Reserv.findByIdAndDelete({_id: reserve_id})
+
+    await Reserv.findByIdAndDelete({ _id: reserve_id })
 
     return res.send()
   }

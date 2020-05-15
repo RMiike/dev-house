@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 const ReservSchema = new Schema({
   date: String,
@@ -10,6 +10,6 @@ const ReservSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'House'
   }
-});
+})
 
-module.exports =  model('Reserv', ReservSchema)
+module.exports = model('Reserv', ReservSchema)
