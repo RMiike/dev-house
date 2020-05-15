@@ -1,38 +1,38 @@
-import React, {useState} from 'react';
-import { Container, Form,  Button } from 'react-bootstrap'
-import { FiArrowLeftCircle} from 'react-icons/fi'
+import React, { useState } from 'react';
+import { Container, Form, Button } from 'react-bootstrap'
+import { FiArrowLeftCircle } from 'react-icons/fi'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import axios from '../../services/api'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const SignUp = () => {
   const [email, setEmail] = useState()
   const history = useHistory()
 
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault()
-    try{
-      await axios.post('sessions', {email})
+    try {
+      await axios.post('sessions', { email })
       history.push('/signin')
 
-    }catch(e){
+    } catch (e) {
       alert('Usuário já cadastrado')
     }
   }
   return (
     <MContainer fluid >
-     <SContainer>
+      <SContainer>
         <HeaderContainer>
-        <H1>Join Us</H1>
-        <Link to='/'>  <FiArrowLeftCircle size={32}/></Link>
+          <H1>Join Us</H1>
+          <Link to='/'>  <FiArrowLeftCircle size={32} /></Link>
         </HeaderContainer>
         <DForm
           onSubmit={handleSubmit}
         >
-              <Form.Group>
+          <Form.Group>
             <FormControl type="email" placeholder="name@example.com"
-              onChange={(e)=>{setEmail(e.target.value)}}
+              onChange={(e) => { setEmail(e.target.value) }}
             />
           </Form.Group>
           {/* <Form.Group>
@@ -42,7 +42,7 @@ const SignUp = () => {
           <Form.Group>
             <FormControl type="password" placeholder="Password" />
           </Form.Group> */}
-        <MButton type='submit'>Sign Up</MButton>
+          <MButton type='submit'>Sign Up</MButton>
         </DForm>
       </SContainer>
       <RContainer>

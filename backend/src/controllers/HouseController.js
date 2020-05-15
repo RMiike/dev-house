@@ -51,7 +51,7 @@ class HouseController {
     try {
       const { status } = req.query
 
-      const houses = await House.find({ status }).catch((e) => { if (e) throw e })
+      const houses = await House.find({ status }).catch((e) => { if (e) { throw e } })
       return res.json(houses)
     } catch (err) {
       return res.sendStatus(500)

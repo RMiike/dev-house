@@ -13,14 +13,14 @@ class App {
       await mongoose.connect(process.env.DB_STRING, {
         useUnifiedTopology: true,
         useNewUrlParser: true
-      }).catch(e => {
+      }).catch((e) => {
         if (e) {
           handleConnect()
         }
       })
     }
     mongoose.connection.once('open');
-    mongoose.connection.on('error', (e) => { if (e) handleConnect() });
+    mongoose.connection.on('error', (e) => { if (e) { handleConnect() } });
     handleConnect()
 
 

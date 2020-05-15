@@ -14,7 +14,7 @@ const SignIn = () => {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    const user = await axios.get(`sessions?email=${email}`).catch(e => { if (e) alert('User not found!') })
+    const user = await axios.get(`sessions?email=${email}`).catch((e) => { if (e) alert('User not found!') })
     if (user) {
       history.replace('/')
       return
@@ -50,7 +50,7 @@ const SignIn = () => {
               type='checkbox'
               style={{ backgroundColor: 'transparent' }}
               checked={keepLogged}
-              onClick={()=>{setKeepLogged(!keepLogged)}}
+              onClick={() => { setKeepLogged(!keepLogged) }}
             />
           </LContainer>
           <MButton type='submit'>Login</MButton>
