@@ -57,11 +57,10 @@ $ yarn start
 ```
 
 ## :memo: License
-This project is under the MIT license. See the [LICENSE](https://github.com/RMiike/dev-house/blob/master/LICENSE) for more information.
+[MIT](https://github.com/RMiike/dev-house/blob/master/LICENSE) license.
 
 ---
 
-[Get in touch!](https://www.linkedin.com/in/renato-alves-583804176/)
 
 [nodejs]: https://nodejs.org/
 [yarn]: https://yarnpkg.com/
