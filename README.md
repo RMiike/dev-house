@@ -14,9 +14,6 @@
 </p>
 
 
-<p align="center">
-  <img alt="Demo on Netlify" src="">
-</p>
 
 ## :technologies: Technologies
 
