@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Container } from 'react-bootstrap'
 import styled from 'styled-components'
 
@@ -9,10 +9,10 @@ const Dashboard = () => {
       Dashboard
 
     </MContainer>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
 
 const MContainer = styled(Container)`
    width: 100%;
