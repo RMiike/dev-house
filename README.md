@@ -22,7 +22,9 @@
   <a href="#memo-license">License</a>
 </p>
 
-
+<p align="center">
+   <img alt="Demo" src="https://raw.githubusercontent.com/RMiike/dev-house/master/assets/ezgif.com-video-to-gif.gif">
+</p>
 
 ## :computer: Technologies
 
