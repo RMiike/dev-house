@@ -100,8 +100,8 @@ const NavLink = styled.ul`
      width: 100%;
      height: 100vh;
     background: #EEEEEE;
-    clip-path:  ${props => props.isActive ? "circle(1000px at 90% -10%)" : "circle(100px at 90% -10%)"};
-    -webkit-clip-path: ${ props => props.isActive ? "circle(1000px at 90% -10%)" : "circle(100px at 90% -10%)"};
+    clip-path:  ${(props) => props.isActive ? "circle(1000px at 90% -10%)" : "circle(100px at 90% -10%)"};
+    -webkit-clip-path: ${ (props) => props.isActive ? "circle(1000px at 90% -10%)" : "circle(100px at 90% -10%)"};
     transition: all 1s ease-out;
   }
 `

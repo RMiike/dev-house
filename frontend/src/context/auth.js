@@ -11,8 +11,8 @@ const AuthContext = createContext({
   deletHouse: () => {},
   loading: false,
   id: '',
-  cadastrarCasa: ()=>{},
-  editarCasa: ()=>{}
+  cadastrarCasa: ()=> {},
+  editarCasa: ()=> {}
 })
 
 export const AuthProvider = ({ children }) => {
@@ -20,7 +20,13 @@ export const AuthProvider = ({ children }) => {
   const [id, setId] = useState()
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-
+  const config = {
+    headers:{
+       'accept': 'application/json',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Content-Type': `multipart/form-data;`
+    }
+  }
   useEffect(() => {
     async function loadStorageData() {
       setLoading(true)
@@ -59,14 +65,7 @@ export const AuthProvider = ({ children }) => {
      formData.append('price',form.price)
      formData.append('status',form.status)
      formData.append('user_id',id)
-     await axios.put(location, formData, form,{
-       headers:{
-          'accept': 'application/json',
-          'accept': 'image/*',
-          'Accept-Language': 'en-US,en;q=0.8',
-          'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
-       }
-     })
+     await axios.put(location, formData, form, config)
      history.replace('/dashboard')
      }catch(e){
        alert('Campos obrigatórios')
@@ -86,14 +85,7 @@ export const AuthProvider = ({ children }) => {
     formData.append('price',form.price)
     formData.append('status',form.status)
     formData.append('user_id',id)
-    await axios.post('houses', formData, form,{
-      headers:{
-         'accept': 'application/json',
-         'accept': 'image/*',
-         'Accept-Language': 'en-US,en;q=0.8',
-         'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
-      }
-    })
+    await axios.post('houses', formData, form,config)
     history.replace('/dashboard')
     }catch(e){
       alert('Campos obrigatórios')
@@ -102,7 +94,7 @@ export const AuthProvider = ({ children }) => {
 
   async function handleLogin(email, senha) {
 
-    const user = await axios.get(`sessions?email=${email}`).catch((e) => { if (e) alert('User not found!') })
+    const user = await axios.get(`sessions?email=${email}`).catch((e) => { if (e){ alert('User not found!')} })
     if (user) {
       setId(user.data._id)
       setEmail(user)

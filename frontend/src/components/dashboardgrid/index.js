@@ -29,8 +29,8 @@ const GridComponent = ({ data }) => {
                         <SpanLoc> <GoLocation /> {item.location}</SpanLoc>
 
                       </SpanDiv>
-                      <EditButton to={`/house/${item.id}`}  >Editar</EditButton>
-                      <EditButton onClick={(e) => { if (window.confirm('Você tem certeza que quer deletar esta casa?'))deletHouse(item.id) }}>Excluir</EditButton>
+                      <Link to={`/house/${item.id}`}  >Editar</Link>
+                      <EditButton onClick={(e) => { if(window.confirm('Você tem certeza que quer deletar esta casa?')){deletHouse(item.id)} }}>Excluir</EditButton>
                     </ContentDivBottom>
                   </ContentDiv>
                 </GridItem>
@@ -97,7 +97,7 @@ line-height: 37px;
 letter-spacing: 1px;
 color: #444444;
 `
-const EditButton = styled(Link)`
+const EditButton = styled.button`
 width: 78px;
 height: 26px;
 color: rgba(0, 42, 255, 0.75);

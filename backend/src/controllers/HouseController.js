@@ -12,7 +12,6 @@ class HouseController {
       description, location, price, status
     })
     return res.json(house)
-    return res.json({ ok: true })
   }
 
   async update(req, res) {

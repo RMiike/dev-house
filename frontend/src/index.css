@@ -8,19 +8,15 @@
 }
 
 
-a,
-Link {
-  text-decoration: none;
-}
 body {
   font: 400 14px Montserrat, sans-serif;
   background: linear-gradient(
-      17.12deg,
-      #3084d2 19.89%,
-      #93deff 62.95%,
-      #bdeff2 103.4%
-    ),
-    #aaaaaa;
+    17.12deg,
+    #3084d2 19.89%,
+    #93deff 62.95%,
+    #bdeff2 103.4%
+  ),
+    #aaa;
   height: 100vh;
   -webki-font-smoothing: antialiased;
 }
