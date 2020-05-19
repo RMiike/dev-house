@@ -2,7 +2,6 @@
 
 <p align="center">
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ba36cd4e0994ee489ac1434a942ab90)](https://app.codacy.com/manual/RMiike/dev-house?utm_source=github.com&utm_medium=referral&utm_content=RMiike/dev-house&utm_campaign=Badge_Grade_Dashboard)
 
    [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ba36cd4e0994ee489ac1434a942ab90)](https://app.codacy.com/manual/RMiike/dev-house?utm_source=github.com&utm_medium=referral&utm_content=RMiike/dev-house&utm_campaign=Badge_Grade_Dashboard)
    [![GitHub issues](https://img.shields.io/github/issues/RMiike/dev-house)](https://github.com/RMiike/dev-house/issues)
