@@ -17,7 +17,7 @@ routes.get('/dashboard', DashboardController.show)
 
 routes.post('/houses', upload.single('thumbnail'), HouseController.store)
 routes.get('/houses', HouseController.index)
-routes.put('/houses/:houses_id', upload.single('thumbnail'), HouseController.update)
+routes.put('/house/:houses_id', upload.single('thumbnail'), HouseController.update)
 routes.delete('/houses', HouseController.destroy)
 
 routes.post('/houses/:house_id/reserve', ReservController.store)

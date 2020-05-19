@@ -4,27 +4,22 @@ const User = require('../models/User')
 class HouseController {
 
   async store(req, res) {
-
     const { filename } = req.file
-    const { description, location, price, status } = req.body
-    const { user_id } = req.headers
-
+    const { user_id, description, location, price, status } = req.body
     const house = await House.create({
       user: user_id,
       thumbnail: filename,
       description, location, price, status
     })
     return res.json(house)
-
+    return res.json({ ok: true })
   }
 
   async update(req, res) {
     try {
       const { filename } = req.file
       const { houses_id } = req.params
-      const { description, location, price, status } = req.body
-      const { user_id } = req.headers
-
+      const { user_id, description, location, price, status } = req.body
       const user = await User.findById(user_id)
       const houses = await House.findById(houses_id)
 
@@ -43,8 +38,6 @@ class HouseController {
       return res.sendStatus(500)
 
     }
-
-
   }
 
   async index(req, res) {
@@ -60,15 +53,10 @@ class HouseController {
   }
 
   async destroy(req, res) {
-
-    const { house_id } = req.body
+    const house_id = req.query.id
     const { user_id } = req.headers
-
     const user = await User.findById(user_id)
     const houses = await House.findById(house_id)
-
-
-
     if (String(user._id) !== String(houses.user)) {
       return res.status(401).json({ error: ' não autorizado' })
 

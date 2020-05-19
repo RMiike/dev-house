@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap'
 import { FiArrowLeftCircle } from 'react-icons/fi'
 import styled from 'styled-components'
+import BGSvg from '../../assets/bgsignup.svg'
 import { Link } from 'react-router-dom'
 import axios from '../../services/api'
 import { useHistory } from 'react-router-dom'
 
 const SignUp = () => {
   const [email, setEmail] = useState()
+  const [pass, setPass] = useState()
+  const [name, setName] = useState()
   const history = useHistory()
 
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-      await axios.post('sessions', { email })
+      await axios.post('sessions', { email, name, pass })
       history.push('/signin')
 
     } catch (e) {
@@ -21,108 +23,137 @@ const SignUp = () => {
     }
   }
   return (
-    <MContainer fluid >
-      <SContainer>
+    <MContainer style={{ background: `url(${BGSvg})` }}>
+      <Form>
         <HeaderContainer>
-          <H1>Join Us</H1>
-          <Link to='/'>  <FiArrowLeftCircle size={32} /></Link>
+          <H1>Cadastrar</H1>
+          <Link to='/'>  <FiArrowLeftCircle size={30} color='#444' /></Link>
         </HeaderContainer>
-        <DForm
-          onSubmit={handleSubmit}
+        <Input
+          type="text"
+          onChange={(e) => { setName(e.target.value) }}
+          placeholder="Nome Completo"
+        />
+        <Input
+          type="email"
+          placeholder="name@example.com"
+          onChange={(e) => { setEmail(e.target.value) }}
+        />
+        <Input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => { setPass(e.target.value) }}
+        />
+        <CadastrarButton
+          onClick={handleSubmit}
         >
-          <Form.Group>
-            <FormControl type="email" placeholder="name@example.com"
-              onChange={(e) => { setEmail(e.target.value) }}
-            />
-          </Form.Group>
-          {/* <Form.Group>
-            <FormControl type="text" placeholder="Nome Completo" />
-          </Form.Group>
-       
-          <Form.Group>
-            <FormControl type="password" placeholder="Password" />
-          </Form.Group> */}
-          <MButton type='submit'>Sign Up</MButton>
-        </DForm>
-      </SContainer>
-      <RContainer>
-        <Span>Already a member? <Link to='signin'>Sign In</Link></Span>
-      </RContainer >
+          Cadastrar
+        </CadastrarButton>
+      </Form>
+
+      <RodaPeDiv>
+        <Span>Já está cadastrado?  <Link style={{ textDecoration: 'none', color: '#222' }} to='signin'>Entrar</Link></Span>
+      </RodaPeDiv>
     </MContainer>
   );
 };
 
 export default SignUp;
 
-const MContainer = styled(Container)`
-   width: 100%;
-    max-width: 1820px;
-    height: 100vh;
-    display:flex;
-    flex-direction: column;
-    background-image: linear-gradient(200deg, #CFD3E3 , #E7E9FB, #3098D2 80%);
+const MContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-`
-
-const HeaderContainer = styled(Container)`
-  display: flex;
-  margin: 45px auto 21px;
-  justify-content: space-around;  
-`
-
-const H1 = styled.h1`
-  color: #444444;
-  font-size: 28px;
+  width: 100%;
+  height: 100vh;
 `
 
 
-const DForm = styled(Form)`
-  margin-bottom: 18px;
-`
 
-const SContainer = styled(Container)`
-border-radius: 20px;
-background-color: #F2F2F2;
-border: 1px solid #F2F2F2;
-display:flex;
+const Form = styled.form`
+opacity: 0.8;
+display: flex;
 flex-direction: column;
-  align-items: center;
-  max-width: 423px;
-  max-height: 392px;
-`
-const FormControl = styled(Form.Control)`
-  width: 323px;
-  height: 43px;
+justify-content: center;
+align-items: center;
+width: 423px;
+height: 392px;
+background: #DDDDDD;
+box-shadow: inset 0px 3px 13px rgba(0, 0, 0, 0.03);
 
-  border: none;
+border-radius: 25px;
+`
+
+const HeaderContainer = styled.div`
+margin-top: 15px;
+display: flex;
+width: 100%;
+flex-direction: row;
+align-items: center;
+justify-content: space-around;
+`
+const H1 = styled.h1`
+margin-bottom: 20px;
+  font-size: 28px;
+  color: #444;
+  line-height: 34.7px;
+`
+
+const Input = styled.input`
+width: 343px;
+height: 44px;
+border: none;
   outline:none;
   border-radius:0;
-  border-bottom: 2px solid blue;
-  background: #F2F2F2;
-
-  &:focus{
-    border: none;
-  background: #F2F2F2;
-  }
+  border-bottom: 2px solid rgba(0, 42, 255, 0.75);
+  background: transparent;
+  font-family: Montserrat;
+font-style: normal;
+font-weight: bold;
+font-size: 15.6667px;
+line-height: 43px;
+letter-spacing: 1px;
+margin: 10px 0 ;
+opacity: 1;
+color: #222;
 `
 
-const MButton = styled(Button)`
- width: 323px;
- border-radius: 50px;
-  height: 43px;
-  border: none;
-  background-image: linear-gradient( #2c0684, #0a34d8, #9082ff);
-  margin-bottom: 39px;
+const CadastrarButton = styled.button`
+border-radius: 50px;
+color: #fff;
+width: 343px;
+height: 50px;
+background: linear-gradient(0deg, rgba(0, 42, 255, 0.75) 15.55%, rgba(5, 159, 255, 0.75) 76.83%, rgba(38, 0, 255, 0.75) 100%), #E9486D;
+box-shadow: 0px 10px 27px rgba(0, 0, 0, 0.1);
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 12.6667px;
+line-height: 43px;
+text-align: center;
+letter-spacing: 1px;
+color: #FFFFFF;
+margin-top: 50px;
+&:hover {
+  
+  background: linear-gradient(0deg, rgba(0, 42, 255, 0.75) 15.55%, rgba(5, 159, 255, 0.75) 76.83%, rgba(38, 0, 255, 0.75) 100%), #000;
+
+    transition: 0.7s;
+  }`
+
+const RodaPeDiv = styled.div`
+margin-top: 35px;
+text-align:center;
+border-top: 1px solid rgba(255,255,255,0.25);
+width: 403px;
+height: 51px;
 `
-const RContainer = styled(Container)`
-  position:relative;
-  width: 423px;
-  border-top: 1px solid #fff;
-  bottom: -42px;
-  text-align: center;
-`
+
 const Span = styled.span`
-  color: #fff;
-  font-size: 13px;
-`
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 12.6667px;
+line-height: 43px;
+  color: rgba(255,255,255,.9);`
